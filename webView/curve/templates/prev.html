@@ -1,45 +1,51 @@
-{% extends 'bootstrap/base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
-
-
-{% block title %}
-	Previous
-{% endblock %}
-
-{% block navbar %}
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light">
-	  <a class="navbar-brand" href="#">ECC</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarNav">
-	    <ul class="navbar-nav">
-	    	<li class="nav-item">
-	    		<a class="nav-link" href="/curve">New Curve</a>
-	    	</li>
-	    </ul>
-	  </div>
-	</nav>
-{% endblock navbar %}
-
-
-
-{% block content %}
-	<div class="container" style="background-color: rgba(12,122,12,0.2);">
-		<h1 class="display-3 text-center text-secondary"> Previous Curves </h1>
-		<div class="row">
-			<div class="col-sm-3"></div>
-			<div class="col-sm-6">
-				{% for image in previous %}
-				<div class="card text-center m-2" style="border-radius: 30px">
-				  <img style="height: 300px; width: 350px" class="card-img-top ml-5" src="{{url_for('cy.static',filename=image.name)}}" alt="Unavailable">
-				  <div class="card-body">
-				    <h5 class="card-title">a = {{image.name.strip('.png')[2:].split("&")[0]}} b = {{image.name.strip('.png')[2:].split("&")[1]}} p = {{image.name.strip('.png')[2:].split("&")[2]}}</h5>
-				    <a href="{{'/curve/'+image.name.strip('.png')[2:]}}" class="btn btn-primary">See Curve</a>
-				  </div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-	</div>
+{% extends 'bootstrap/base.html' %} {% import 'bootstrap/wtf.html' as wtf %} {%
+block title %} Previous {% endblock %} {% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light">
+  <a class="navbar-brand" href="#">ECC</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/curve">New Curve</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock navbar %} {% block content %}
+<div class="container" style="background-color: rgba(12, 122, 12, 0.2)">
+  <h1 class="display-3 text-center text-secondary">Previous Curves</h1>
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      {% for image in previous %}
+      <div class="card text-center m-2" style="border-radius: 30px">
+        <img
+          style="height: 300px; width: 350px"
+          class="card-img-top ml-5"
+          src="{{url_for('cy.static',filename=image.name)}}"
+          alt="Unavailable"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            a = {{image.name.strip('.png')[2:].split("&")[0]}} b =
+            {{image.name.strip('.png')[2:].split("&")[1]}} p =
+            {{image.name.strip('.png')[2:].split("&")[2]}}
+          </h5>
+          <!-- <a href="{{'/curve/'+image.name.strip('.png')[2:]}}" class="btn btn-primary">See Curve</a> -->
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 {% endblock content %}

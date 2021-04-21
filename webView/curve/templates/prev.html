@@ -44,7 +44,11 @@ block title %} Home Page {% endblock %} {% block navbar %}
             {{image.name.strip('.png')[2:].split("&")[1]}} p =
             {{image.name.strip('.png')[2:].split("&")[2]}}
           </h5>
-          <!-- <a href="{{'/curve/'+image.name.strip('.png')[2:]}}" class="btn btn-primary">See Curve</a> -->
+          <a
+            href="{{'/curve/'+image.name.strip('.png')[2:]}}"
+            class="btn btn-primary"
+            >See Curve</a
+          >
         </div>
       </div>
       {% endfor %}

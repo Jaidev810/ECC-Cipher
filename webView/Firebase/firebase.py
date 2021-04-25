@@ -6,7 +6,12 @@ import os
 class FirebaseDB():
 
     def __init__(self):
-        self.configuration = {}
+        self.configuration = {
+            "apiKey" : os.getenv("APIKEY"),
+            "authDomain" : os.getenv("AUTHDOMAIN"),
+            "projectId" : os.getenv("PROJECTID"),
+            "storageBUcket" : os.getenv("STORAGEBUCKET")
+        }
         self.initialize()
 
     def initialize(self):

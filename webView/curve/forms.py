@@ -7,5 +7,4 @@ class CurveInput(FlaskForm):
 	a = IntegerField("Enter a", validators=[DataRequired()])
 	b = IntegerField("Enter b", validators=[DataRequired()])
 	p = IntegerField("Enter p", validators=[DataRequired()])
-	
 	submit = SubmitField("See Stats")

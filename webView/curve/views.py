@@ -5,7 +5,7 @@ from curve.models import ScatterMade
 from coreCode.maker import Grapher
 import matplotlib.pyplot as plt
 import os
-
+from curve.firebase import FirebaseDB
 ## for logging out redirect to a url which pops out the username
 
 base_dir = os.path.abspath(os.path.dirname(__file__))
@@ -56,6 +56,8 @@ def getVariance(counter):
 
 
 def getDict(a,b,p):
+	i = 0
+	values = "index" + i
 	params = dict()
 	params["a"] = a
 	params["b"] = b
@@ -67,9 +69,12 @@ def getDict(a,b,p):
 	params['generators'] = getGenerators(degree)
 	## 5 generator points and then the variance of the counter
 	params['avgStd'] = getVariance(counter)
+	obj = FirebaseDB()
 	if not previous:
 		saveImage(counter,a,b,p)
 		n = ScatterMade(name=getName(a,b,p))
+		obj.set(values, {"a":a, "b":b, "p":p})
+		i += 1
 		db.session.add(n)
 		db.session.commit()
 	return params
@@ -90,7 +95,6 @@ def made():
 @curves.route("/curve", methods=["GET","POST"])
 def take_input():
 	form = CurveInput()
-	print(form.p.data)
 	if form.validate_on_submit():
 		if form.p.data > 150 or not prime(form.p.data):
 			flash("Invalid Input")

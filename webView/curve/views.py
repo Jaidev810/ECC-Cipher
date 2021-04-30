@@ -90,6 +90,7 @@ def made():
 @curves.route("/curve", methods=["GET","POST"])
 def take_input():
 	form = CurveInput()
+	print(form.p.data)
 	if form.validate_on_submit():
 		if form.p.data > 150 or not prime(form.p.data):
 			flash("Invalid Input")

@@ -32,8 +32,14 @@ get_flashed_messages()%}
 {% endfor %}
 
 <div class="row mt-2">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-3 m-4">{{wtf.quick_form(form)}}</div>
+  <div class="col-sm-4">
+    <p style="margin-left: 400px; width: 100%">
+      Note: Enter only Prime Numbers
+    </p>
+  </div>
+  <div class="col-sm-3 m-4" style="margin-top: 70px">
+    {{wtf.quick_form(form)}}
+  </div>
 </div>
 
 <div class="row bg-dark text-light p-2 fixed-bottom">

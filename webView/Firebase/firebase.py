@@ -26,5 +26,9 @@ class FirebaseDB():
             print(str(e))
             return False
 
+    def Set(self, name, data):
+        result = self.database.child('values').child(name).set(data)
+        return result
+
 if __name__ == '__main__':
     obj = FirebaseDB()
